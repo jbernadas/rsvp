@@ -10,10 +10,15 @@ const createLi = (text) => {
   const checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
   label.appendChild(checkbox);
-  const button = document.createElement('button');
-  button.textContent = 'Remove';
   li.appendChild(label);
-  li.appendChild(button);
+  // Edit button
+  const editButton = document.createElement('button');
+  editButton.textContent = 'Edit';
+  li.appendChild(editButton);
+  // Remove button
+  const removeButton = document.createElement('button');
+  removeButton.textContent = 'Remove';
+  li.appendChild(removeButton);
   return li;
 }
 
@@ -37,7 +42,7 @@ ul.addEventListener('change', (e) => {
 });
 
 ul.addEventListener('click', (e) => {
-  if (e.target.tagName === 'BUTTON') {
+  if (e.target.textContent === 'Remove') {
     e.target.parentNode.remove();
   }
 });
