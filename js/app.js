@@ -44,11 +44,13 @@ ul.addEventListener('change', (e) => {
 ul.addEventListener('click', (e) => {
   if (e.target.tagName === 'BUTTON') {
     const button = e.target;
+    const li = button.parentNode;
+    const ul = li.parentNode;
     if (button.textContent === 'Remove') {
-      button.parentNode.remove();
+      ul.removeChild(li);
     }
     else if (button.textContent === 'Edit') {
-      console.log("Edit button clicked");
+      li.innerHTML = 'Hello';
     }
   }
   
