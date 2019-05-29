@@ -42,7 +42,14 @@ ul.addEventListener('change', (e) => {
 });
 
 ul.addEventListener('click', (e) => {
-  if (e.target.textContent === 'Remove') {
-    e.target.parentNode.remove();
+  if (e.target.tagName === 'BUTTON') {
+    const button = e.target;
+    if (button.textContent === 'Remove') {
+      button.parentNode.remove();
+    }
+    else if (button.textContent === 'Edit') {
+      console.log("Edit button clicked");
+    }
   }
+  
 });
