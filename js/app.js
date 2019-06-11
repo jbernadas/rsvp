@@ -4,7 +4,7 @@ const ul = document.getElementById('invitedList');
 
 const createLi = (text) => {
   const li = document.createElement('li');
-  li.textContent = text;
+  li.innerHTML = '<span>' + text + '</span>';
   const label = document.createElement('label');
   label.textContent = 'Confirmed';
   const checkbox = document.createElement('input');
@@ -50,8 +50,22 @@ ul.addEventListener('click', (e) => {
       ul.removeChild(li);
     }
     else if (button.textContent === 'Edit') {
-      li.innerHTML = 'Hello';
+      const span = li.firstElementChild;
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.value = span.textContent;
+      li.insertBefore(input, span);
+      li.removeChild(span);
+      button.textContent = 'Save';
     }
-  }
-  
+    else if (button.textContent === 'Save') {
+      const input = li.firstElementChild;
+      const span = document.createElement('span');
+      span.textContent = input.value;
+      li.insertBefore(span, input);
+      li.removeChild(input);
+      button.textContent = 'Edit';
+    }
+    
+  }  
 });
