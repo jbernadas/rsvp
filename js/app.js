@@ -1,6 +1,23 @@
 const form = document.getElementById('registrar');
 const input = form.querySelector('input');
+
+const mainDiv = document.querySelector('.main')
 const ul = document.getElementById('invitedList');
+
+const div = document.createElement('div');
+const filterLabel = document.createElement('label');
+const filterCheckbox = document.createElement('input');
+
+filterLabel.textContent = "Hide those who haven't responded"
+filterCheckbox.type = 'checkbox';
+div.appendChild(filterLabel);
+div.appendChild(filterCheckbox);
+mainDiv.insertBefore(div, ul);
+filterCheckbox.addEventListener('change', (e) => {
+  if(filterCheckbox.checked) {
+    
+  }
+})
 
 const createLi = (text) => {
   const li = document.createElement('li');
