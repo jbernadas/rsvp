@@ -1,6 +1,37 @@
 const form = document.getElementById('registrar');
 const input = form.querySelector('input');
+
+const mainDiv = document.querySelector('.main');
 const ul = document.getElementById('invitedList');
+
+const div = document.createElement('div');
+const filterLabel = document.createElement('label');
+const filterCheckbox = document.createElement('input');
+
+filterLabel.textContent = "Hide those who haven't responded";
+filterCheckbox.type = 'checkbox';
+div.appendChild(filterLabel);
+div.appendChild(filterCheckbox);
+mainDiv.insertBefore(div, ul);
+filterCheckbox.addEventListener('change', (e) => {
+  const isChecked = e.target.checked;
+  const lis = ul.children;
+  if (isChecked) {
+    for (let i = 0; i <= lis.length; i++) {
+      let li = lis[i];
+      if (li.className === 'responded') {
+        li.style.display = '';
+      } else {
+        li.style.display = 'none';
+      }
+    }
+  } else {
+    for (let i = 0; i <= lis.length; i++) {
+      let li = lis[i];
+      li.style.display = '';
+    }
+  }
+})
 
 const createLi = (text) => {
   const li = document.createElement('li');
@@ -66,6 +97,5 @@ ul.addEventListener('click', (e) => {
       li.removeChild(input);
       button.textContent = 'Edit';
     }
-    
   }  
 });
