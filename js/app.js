@@ -35,22 +35,37 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   const createLi = (text) => {
+    function createElement(elementName, property, value) {
+      const element = document.createElement(elementName);
+      element[property] = value;
+      return element;
+    }
+
+    function appendToLI(elementName, property, value) {
+      const element = createElement(elementName, property, value);
+      li.appendChild(element);
+      return element;
+    }
     const li = document.createElement('li');
-    li.innerHTML = '<span>' + text + '</span>';
-    const label = document.createElement('label');
-    label.textContent = 'Confirmed';
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    label.appendChild(checkbox);
-    li.appendChild(label);
+    // li.innerHTML = '<span>' + text + '</span>';
+
+    appendToLI('span', 'textContent', text);
+
+    appendToLI('label', 'textContent', 'Confirmed')
+      .appendChild(createElement('input', 'type', 'checkbox'));
+
+    // const label = createElement('label', 'textContent', 'Confirmed');
+
+    // const checkbox = createElement('input', 'type', 'checkbox');
+
+    // label.appendChild(checkbox);
+    // li.appendChild(label);
+
     // Edit button
-    const editButton = document.createElement('button');
-    editButton.textContent = 'Edit';
-    li.appendChild(editButton);
+    appendToLI('button', 'textContent', 'Edit');
+
     // Remove button
-    const removeButton = document.createElement('button');
-    removeButton.textContent = 'Remove';
-    li.appendChild(removeButton);
+    appendToLI('button', 'textContent', 'Remove');
     return li;
   }
 
