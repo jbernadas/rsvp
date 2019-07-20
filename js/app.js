@@ -47,19 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
       return element;
     }
     const li = document.createElement('li');
-    // li.innerHTML = '<span>' + text + '</span>';
 
     appendToLI('span', 'textContent', text);
 
     appendToLI('label', 'textContent', 'Confirmed')
       .appendChild(createElement('input', 'type', 'checkbox'));
-
-    // const label = createElement('label', 'textContent', 'Confirmed');
-
-    // const checkbox = createElement('input', 'type', 'checkbox');
-
-    // label.appendChild(checkbox);
-    // li.appendChild(label);
 
     // Edit button
     appendToLI('button', 'textContent', 'Edit');
